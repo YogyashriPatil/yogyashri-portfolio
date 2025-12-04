@@ -20,7 +20,7 @@ export default function AnimatedBG() {
           color: { value: "#ffffff" },
           links: {
             enable: true,
-            color: "#ffffff",
+            color: "#00ffc8",
             distance: 140,
             opacity: 0.4,
           },
@@ -34,17 +34,39 @@ export default function AnimatedBG() {
         },
         interactivity: {
           events: {
-            onHover: { enable: true, mode: "repulse" },
+            onHover: { enable: true, mode: ["repulse", "light"]  },
+            onClick: { enable: true, mode: "bubble" }
           },
-          modes: { repulse: { distance: 100 } },
+          modes: { repulse: { distance: 100 } ,
+          bubble: {
+            distance: 150,
+            duration: 2,
+            opacity: 1,
+            size: 6
+          },
+          light: {
+            area: {
+              gradient: {
+                start: { value: "#00ffc8" },  // Neon Green Glow
+                stop: { value: "#ffffff" }   // Soft White Glow
+              },
+              radius: 120,
+            },
+            shadow: {
+              color: "#00ffc8",
+              length: 25,
+            },
+          },
         },
-        fpsLimit: 60,
-      }}
-      style={{
-        position: "absolute",
-        inset: 0,
-        zIndex: -1,
-      }}
+      },
+      fps_limit: 60,
+      // style={{
+      //   position: "fixed",
+      //   inset: 0,
+      //   zIndex: -10,
+      // }}
+    }
+  }
     />
   );
 }
